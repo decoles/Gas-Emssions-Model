@@ -4,17 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LandGEM.Views"
+        xmlns:localview="clr-namespace:LandGEM.ViewModels"
         mc:Ignorable="d"
-        Title="PrimaryControlWindow" Height="450" Width="800">
+        Title="PrimaryControlWindow" Height="900" Width="1400">
+
+    <Window.DataContext>
+        <localview:PrimaryContorolViewModel/>
+    </Window.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="9*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Frame />
-        <Button Grid.Row="1" Content="Next" Width="50" Height="30" HorizontalAlignment="Right"/>
-        <Button Grid.Row="1" Content="Back" Width="50" Height="30" HorizontalAlignment="Center"/>
-
+        <Button Grid.Row="1" Content="Next" Width="50" Height="30" HorizontalAlignment="Right" Command="{Binding NavigateForward}"/>
+        <Button Grid.Row="1" Content="Back" Width="50" Height="30" HorizontalAlignment="Center" Command="{Binding NavigateBackward}"/>
+        <Frame Grid.Row="0" Content="{Binding CurrentPage}"/>
 
     </Grid>
 </Window>
