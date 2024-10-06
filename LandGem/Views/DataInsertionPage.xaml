@@ -6,38 +6,77 @@
       xmlns:local="clr-namespace:LandGEM.Views"
       xmlns:localViewModel="clr-namespace:LandGEM.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="800"
       Title="DataInsertionPage">
 
     <Page.DataContext>
         <localViewModel:DataEntryViewModel/>
     </Page.DataContext>
 
-    <Grid>
+    <Grid Background="white">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="37*"/>
-            <ColumnDefinition Width="83*"/>
-            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="1. PROVIDE LANDFILL CHARACTERISITCS" Grid.ColumnSpan="2">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+        <GroupBox Header="1. PROVIDE LANDFILL CHARACTERISITCS" Grid.Column="0" Grid.Row="0">
             <StackPanel>
                 <TextBlock>landfill open year:</TextBlock>
-                <TextBox x:Name="txtopenyear" Width="106" HorizontalAlignment="left"/>
+                <TextBox Width="106" HorizontalAlignment="left"/>
                 <TextBlock>landfill closure year:</TextBlock>
                 <TextBox Height="21" Width="106" HorizontalAlignment="left" 
                          Text="{Binding DataModel.LandfillOpenYear, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock><Run Text="have model calculate closure year?"/></TextBlock>
-                <RadioButton x:Name="radioyes">yes</RadioButton>
-                <RadioButton x:Name="radiono">no</RadioButton>
+                <RadioButton> yes</RadioButton>
+                <RadioButton>no</RadioButton>
                 <TextBlock><Run Text="waste desgin capacity:"/></TextBlock>
-                <ComboBox x:Name="combowastedesign" Width="120"  HorizontalAlignment="left">
+                <ComboBox Width="120"  HorizontalAlignment="left">
                     <ComboBoxItem Content="megagrams" IsSelected="true"/>
                     <ComboBoxItem Content="short tons"/>
                 </ComboBox>
             </StackPanel>
         </GroupBox>
-        
-        
+        <GroupBox Header="2. Determine Model Parameters" Grid.Column="0" Grid.Row="1">
+            <StackPanel>
+                <Label Content="Methane Generation Rate, k (year^-1)"/>
+                <ComboBox MaxWidth="300"/>
+                <Label Content="Potential Methane Generation Capacity, L0 (m3/MG)"/>
+                <ComboBox MaxWidth="300"/>
+                <Label Content="NMOC Concnetration (ppmv as hexane)"/>
+                <ComboBox MaxWidth="300"/>
+                <Label Content="Methane Generation Rate, k (year^-1)"/>
+                <ComboBox MaxWidth="300"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="3. Select Gasses/Pollutants" Grid.Column="0" Grid.Row="2">
+            <StackPanel>
+                <Label Content="Gas / Pollutant #1"/>
+                <ComboBox MaxWidth="300"/>
+                <Label Content="Gas / Pollutant #2"/>
+                <ComboBox MaxWidth="300"/>
+                <Label Content="Gas / Pollutant #3"/>
+                <ComboBox MaxWidth="300"/>
+                <Label Content="Gas / Pollutant #4"/>
+                <ComboBox MaxWidth="300"/>
+
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="4. Enter Waste Acceptance Rates" Grid.Column="1">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Input Units"/>
+                    <ComboBox/>
+                </StackPanel>
+                <DataGrid/>
+            </StackPanel>
+        </GroupBox>
+
     </Grid>
 
 </Page>
