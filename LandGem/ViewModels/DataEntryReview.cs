@@ -1,9 +1,14 @@
 ﻿using LandGEM.Models;
 using LandGEM.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace LandGEM.ViewModels
 {
-    public class DataEntryViewModel : ObservableObject
+    public class DataEntryReview : ObservableObject
     {
         private DataInsertionModel _dataModel;
 
@@ -13,7 +18,7 @@ namespace LandGEM.ViewModels
             set => SetProperty(ref _dataModel, value);
         }
 
-        public DataEntryViewModel()
+        public DataEntryReview()
         {
             DataModel = new DataInsertionModel();
         }

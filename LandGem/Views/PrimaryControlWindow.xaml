@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
         <Button Grid.Row="1" Content="Next" Width="50" Height="30" HorizontalAlignment="Right" Command="{Binding NavigateForward}"/>
         <Button Grid.Row="1" Content="Back" Width="50" Height="30" HorizontalAlignment="Center" Command="{Binding NavigateBackward}"/>
-        <Frame Grid.Row="0" Content="{Binding CurrentPage}"/>
+        <Frame Grid.Row="0" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}"/>
 
     </Grid>
 </Window>

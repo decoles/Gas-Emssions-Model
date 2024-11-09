@@ -1,13 +1,5 @@
 ﻿using LandGEM.Services;
 using LandGEM.Views;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -18,6 +10,7 @@ namespace LandGEM.ViewModels
     /// </summary>
     public class PrimaryContorolViewModel : ObservableObject
     {
+        //re-write to follow https://github.com/CSharpDesignPro/Page-Navigation-using-MVVM/blob/main/ViewModel/NavigationVM.cs
         private Page _currentPage;
         private Page _FirstPage = new DataInsertionPage();
         private Page _ReviewPage = new DataReviewPage();
