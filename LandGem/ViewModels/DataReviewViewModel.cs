@@ -3,7 +3,7 @@ using LandGEM.Services;
 
 namespace LandGEM.ViewModels
 {
-    public class DataEntryViewModel : ViewModelBase
+    public class DataReviewViewModel : ViewModelBase
     {
         private DataInsertionModel _dataModel;
 
@@ -13,7 +13,7 @@ namespace LandGEM.ViewModels
             set { _dataModel = value; OnPropertyChanged(); }
         }
 
-        public DataEntryViewModel()
+        public DataReviewViewModel()
         {
             DataModel = new DataInsertionModel();
         }

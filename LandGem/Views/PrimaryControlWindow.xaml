@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LandGEM.Views"
         xmlns:localview="clr-namespace:LandGEM.ViewModels"
-        mc:Ignorable="d"
-        Title="PrimaryControlWindow" Height="900" Width="1400">
+        mc:Ignorable="d" 
+        Height="900" 
+        Width="1400">
 
+      
     <Window.DataContext>
         <localview:PrimaryContorolViewModel/>
     </Window.DataContext>
@@ -19,7 +21,7 @@
         </Grid.RowDefinitions>
         <Button Grid.Row="1" Content="Next" Width="50" Height="30" HorizontalAlignment="Right" Command="{Binding NavigateForward}"/>
         <Button Grid.Row="1" Content="Back" Width="50" Height="30" HorizontalAlignment="Center" Command="{Binding NavigateBackward}"/>
-        <Frame Grid.Row="0" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}"/>
+        <ContentControl Grid.Row="0" Content="{Binding CurrentView}"/>
 
     </Grid>
 </Window>

@@ -1,13 +1,8 @@
 ﻿using LandGEM.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LandGEM.Models
 {
-    public class DataInsertionModel : ObservableObject
+    public class DataInsertionModel : ViewModelBase
     {
         private int _landfillOpenYear;
         private int _landfillClosureYear;

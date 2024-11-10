@@ -1,16 +1,11 @@
-﻿<Page x:Class="LandGEM.Views.DataInsertionPage"
+﻿<UserControl x:Class="LandGEM.Views.DataInsertionPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LandGEM.Views"
       xmlns:localViewModel="clr-namespace:LandGEM.ViewModels"
-      mc:Ignorable="d" 
-      Title="DataInsertionPage">
-
-    <Page.DataContext>
-        <localViewModel:DataEntryViewModel/>
-    </Page.DataContext>
+      mc:Ignorable="d">
 
     <Grid Background="white">
         <Grid.ColumnDefinitions>
@@ -28,8 +23,7 @@
                 <TextBlock>landfill open year:</TextBlock>
                 <TextBox Width="106" HorizontalAlignment="left"/>
                 <TextBlock>landfill closure year:</TextBlock>
-                <TextBox Height="21" Width="106" HorizontalAlignment="left" 
-                         Text="{Binding DataModel.LandfillOpenYear, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Height="21" Width="106" HorizontalAlignment="left" Text="{Binding DataModel.LandfillOpenYear, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock><Run Text="have model calculate closure year?"/></TextBlock>
                 <RadioButton> yes</RadioButton>
                 <RadioButton>no</RadioButton>
@@ -67,7 +61,7 @@
 
             </StackPanel>
         </GroupBox>
-        <GroupBox Header="4. Enter Waste Acceptance Rates" Grid.Column="1">
+        <GroupBox Header="4. Enter Waste Acceptance Rates" Grid.Column="1" Grid.RowSpan="3">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Input Units"/>
@@ -79,4 +73,4 @@
 
     </Grid>
 
-</Page>
+</UserControl>
