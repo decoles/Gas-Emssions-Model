@@ -7,6 +7,11 @@
       xmlns:localViewModel="clr-namespace:LandGEM.ViewModels"
       mc:Ignorable="d" >
 
+
+    <UserControl.DataContext>
+        <localViewModel:DataReviewViewModel/>
+    </UserControl.DataContext>
+    
     <Grid Background="white">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80*"/>

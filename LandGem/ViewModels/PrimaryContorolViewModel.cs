@@ -16,15 +16,6 @@ namespace LandGEM.ViewModels
             set { _currentView = value; OnPropertyChanged(); }
         }
 
-        private DataInsertionModel _dataModel;
-
-        //Share data between views
-        public DataInsertionModel DataModel
-        {
-            get { return _dataModel; }
-            set { _dataModel = value; OnPropertyChanged(); }
-        }
-
         // CanExecute methods for navigation
         private bool CanNavigateForward() => _currentPageNumber < _pageList.Count - 1;
         private bool CanNavigateBackward() => _currentPageNumber > 0;
@@ -61,8 +52,8 @@ namespace LandGEM.ViewModels
             // Initialize page list and add ViewModels
             _pageList = new List<object>
             {
-                new DataEntryViewModel(),
-                new DataReviewViewModel(),
+                new DataEntryViewModel (),
+                new DataReviewViewModel (),
                 //new ResultsViewModel()
             };
 

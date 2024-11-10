@@ -6,6 +6,9 @@
       xmlns:local="clr-namespace:LandGEM.Views"
       xmlns:localViewModel="clr-namespace:LandGEM.ViewModels"
       mc:Ignorable="d">
+    <UserControl.DataContext>
+        <localViewModel:DataEntryViewModel/>
+    </UserControl.DataContext>
 
     <Grid Background="white">
         <Grid.ColumnDefinitions>
