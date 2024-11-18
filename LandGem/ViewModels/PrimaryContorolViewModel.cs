@@ -16,6 +16,13 @@ namespace LandGEM.ViewModels
             set { _currentView = value; OnPropertyChanged(); }
         }
 
+        private DataInsertionModel _insertionModel;
+        public DataInsertionModel InsertionModel
+        {
+            get { return _insertionModel; }
+            set { _insertionModel = value; OnPropertyChanged(); }
+        }
+
         // CanExecute methods for navigation
         private bool CanNavigateForward() => _currentPageNumber < _pageList.Count - 1;
         private bool CanNavigateBackward() => _currentPageNumber > 0;
@@ -52,8 +59,8 @@ namespace LandGEM.ViewModels
             // Initialize page list and add ViewModels
             _pageList = new List<object>
             {
-                new DataEntryViewModel (),
-                new DataReviewViewModel (),
+                new DataEntryViewModel (InsertionModel),
+                new DataReviewViewModel (InsertionModel),
                 //new ResultsViewModel()
             };
 
@@ -62,8 +69,6 @@ namespace LandGEM.ViewModels
             CurrentView = _pageList[_currentPageNumber];
 
             // Initialize commands
-            //NavigateForward = new RelayCommand(NextPage, CanNavigateForward);
-            //NavigateBackward = new RelayCommand(PreviousPage, CanNavigateBackward);
             NavigateForward = new RelayCommand(NextPage, _ => CanNavigateForward());
             NavigateBackward = new RelayCommand(PreviousPage, _ => CanNavigateBackward());
         }

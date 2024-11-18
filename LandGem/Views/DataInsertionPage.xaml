@@ -6,9 +6,12 @@
       xmlns:local="clr-namespace:LandGEM.Views"
       xmlns:localViewModel="clr-namespace:LandGEM.ViewModels"
       mc:Ignorable="d">
-    <UserControl.DataContext>
-        <localViewModel:DataEntryViewModel/>
-    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type localViewModel:DataEntryViewModel}">
+            <local:DataInsertionPage />
+        </DataTemplate>
+    </UserControl.Resources>
 
     <Grid Background="white">
         <Grid.ColumnDefinitions>

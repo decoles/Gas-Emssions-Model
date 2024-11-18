@@ -9,7 +9,20 @@
         Height="900" 
         Width="1400">
 
-      
+    <Window.Resources>
+
+        <DataTemplate DataType="{x:Type localview:PrimaryContorolViewModel}">
+            <local:PrimaryControlWindow />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type localview:DataEntryViewModel}">
+            <local:DataInsertionPage />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type localview:DataReviewViewModel}">
+            <local:DataReviewPage />
+        </DataTemplate>
+    </Window.Resources>   
     <Window.DataContext>
         <localview:PrimaryContorolViewModel/>
     </Window.DataContext>

@@ -5,10 +5,6 @@
              StartupUri="Views/PrimaryControlWindow.xaml">
 
     <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Services/DataTemplate.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+
     </Application.Resources>
 </Application>

@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using LandGEM.Models;
+using LandGEM.ViewModels;
+using System.Windows.Controls;
 
 namespace LandGEM.Views
 {
