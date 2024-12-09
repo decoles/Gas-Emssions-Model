@@ -1,5 +1,6 @@
 ﻿using LandGEM.Models;
 using LandGEM.Services;
+using System.ComponentModel;
 
 namespace LandGEM.ViewModels
 {
@@ -16,7 +17,17 @@ namespace LandGEM.ViewModels
             }
             set
             {
+                if (_dataModel != null)
+                {
+                    _dataModel.PropertyChanged -= OnDataModelPropertyChanged;
+                }
+
                 SetProperty(ref _dataModel, value);
+
+                if (_dataModel != null)
+                {
+                    _dataModel.PropertyChanged += OnDataModelPropertyChanged;
+                }
             }
         }
 
@@ -34,5 +45,10 @@ namespace LandGEM.ViewModels
             DataModel = dataInsertionModel;
         }
 
+        private void OnDataModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            // Notify UI of changes to properties of DataModel
+            OnPropertyChanged(nameof(DataModel));
+        }
     }
 }
