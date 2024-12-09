@@ -29,7 +29,7 @@
                 <TextBlock>landfill open year:</TextBlock>
                 <Label/>
                 <TextBlock>landfill closure year:</TextBlock>
-                <Label/>
+                <Label Content="{Binding DataInsertionModel.LandfillClosureYear , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock><Run Text="have model calculate closure year?"/></TextBlock>
                 <RadioButton>yes</RadioButton>
                 <RadioButton>no</RadioButton>

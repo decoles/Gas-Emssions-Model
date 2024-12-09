@@ -5,20 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LandGEM.Views"
         xmlns:localview="clr-namespace:LandGEM.ViewModels"
-        mc:Ignorable="d" 
-        Height="900" 
-        Width="1400">
+        mc:Ignorable="d" >
 
     <Window.Resources>
-
         <DataTemplate DataType="{x:Type localview:PrimaryContorolViewModel}">
             <local:PrimaryControlWindow />
         </DataTemplate>
-
         <DataTemplate DataType="{x:Type localview:DataEntryViewModel}">
             <local:DataInsertionPage />
         </DataTemplate>
-
         <DataTemplate DataType="{x:Type localview:DataReviewViewModel}">
             <local:DataReviewPage />
         </DataTemplate>

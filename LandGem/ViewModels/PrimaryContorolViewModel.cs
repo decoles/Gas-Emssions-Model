@@ -1,5 +1,6 @@
 ﻿using LandGEM.Models;
 using LandGEM.Services;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace LandGEM.ViewModels
@@ -16,13 +17,13 @@ namespace LandGEM.ViewModels
             set { _currentView = value; OnPropertyChanged(); }
         }
 
-        private DataInsertionModel _insertionModel;
-        public DataInsertionModel InsertionModel
-        {
-            get { return _insertionModel; }
-            set { _insertionModel = value; OnPropertyChanged(); }
-        }
-
+        private DataInsertionModel _insertionModel = new DataInsertionModel();
+        //public DataInsertionModel InsertionModel
+        //{
+        //    get { return _insertionModel; }
+        //    set { _insertionModel = value; OnPropertyChanged(); }
+        //}
+        
         // CanExecute methods for navigation
         private bool CanNavigateForward() => _currentPageNumber < _pageList.Count - 1;
         private bool CanNavigateBackward() => _currentPageNumber > 0;
@@ -31,10 +32,10 @@ namespace LandGEM.ViewModels
         public ICommand NavigateBackward {  get; set; }
 
         // List of ViewModels for page navigation
-        private readonly List<object> _pageList;
+        private readonly ObservableCollection<object> _pageList;
         private int _currentPageNumber;
 
-
+        DataStore dataStore = new DataStore();
         // Navigation methods
         private void NextPage(object parameter = null)
         {
@@ -42,6 +43,7 @@ namespace LandGEM.ViewModels
             {
                 _currentPageNumber++;
                 CurrentView = _pageList[_currentPageNumber];
+                //_dataStore.CreateProduct(InsertionModel)
             }
         }
 
@@ -56,13 +58,11 @@ namespace LandGEM.ViewModels
 
         public PrimaryContorolViewModel() 
         {
+            DataEntryViewModel dataEntryVM = new DataEntryViewModel(_insertionModel, dataStore);
+            DataReviewViewModel dataReviewVM = new DataReviewViewModel(_insertionModel, dataStore);
+
             // Initialize page list and add ViewModels
-            _pageList = new List<object>
-            {
-                new DataEntryViewModel (InsertionModel),
-                new DataReviewViewModel (InsertionModel),
-                //new ResultsViewModel()
-            };
+            _pageList = new ObservableCollection<object> { dataEntryVM, dataReviewVM };
 
             // Set the starting page
             _currentPageNumber = 0;

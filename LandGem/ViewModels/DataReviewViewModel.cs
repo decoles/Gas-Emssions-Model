@@ -5,10 +5,34 @@ namespace LandGEM.ViewModels
 {
     public class DataReviewViewModel : ViewModelBase
     {
-        public DataInsertionModel InsertionModel;
 
-        public DataReviewViewModel(DataInsertionModel InsertionModel)
+        private readonly DataStore _dataStore;
+        private DataInsertionModel _dataModel;
+        public DataInsertionModel DataModel
         {
+            get
+            {
+                return _dataModel;
+            }
+            set
+            {
+                SetProperty(ref _dataModel, value);
+            }
         }
+
+        public DataReviewViewModel(DataInsertionModel InsertionModel, DataStore DataStore)
+        {
+            _dataModel = InsertionModel;
+
+            //If Data Entry Page updated then recieve data
+            _dataStore = DataStore;
+            _dataStore.DataModelCreated += OnProductCreated;
+        }
+
+        public void OnProductCreated(DataInsertionModel dataInsertionModel)
+        {
+            DataModel = dataInsertionModel;
+        }
+
     }
 }
