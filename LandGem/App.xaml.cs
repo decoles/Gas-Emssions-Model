@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using System.Data;
+﻿using LandGEM.Content;
 using System.Windows;
 
 namespace LandGEM
@@ -9,6 +8,9 @@ namespace LandGEM
     /// </summary>
     public partial class App : Application
     {
+        App()
+        {
+            LandfillGasData.LoadData();
+        }
     }
-
 }

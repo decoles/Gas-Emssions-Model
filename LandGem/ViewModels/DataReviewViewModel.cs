@@ -6,7 +6,6 @@ namespace LandGEM.ViewModels
 {
     public class DataReviewViewModel : ViewModelBase
     {
-
         private readonly DataStore _dataStore;
         private DataInsertionModel _dataModel;
         public DataInsertionModel DataModel

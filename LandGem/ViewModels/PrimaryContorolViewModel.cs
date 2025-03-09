@@ -18,11 +18,6 @@ namespace LandGEM.ViewModels
         }
 
         private DataInsertionModel _insertionModel = new DataInsertionModel();
-        //public DataInsertionModel InsertionModel
-        //{
-        //    get { return _insertionModel; }
-        //    set { _insertionModel = value; OnPropertyChanged(); }
-        //}
         
         // CanExecute methods for navigation
         private bool CanNavigateForward() => _currentPageNumber < _pageList.Count - 1;

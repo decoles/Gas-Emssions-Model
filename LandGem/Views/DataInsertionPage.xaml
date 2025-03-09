@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LandGEM.Views"
       xmlns:localViewModel="clr-namespace:LandGEM.ViewModels"
-      mc:Ignorable="d">
+      xmlns:radio="clr-namespace:LandGEM.Services" d:DataContext="{d:DesignInstance Type=radio:ViewModelBase}"
+             mc:Ignorable="d">
 
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type localViewModel:DataEntryViewModel}">
@@ -27,43 +28,43 @@
         <GroupBox Header="1. PROVIDE LANDFILL CHARACTERISITCS" Grid.Column="0" Grid.Row="0">
             <StackPanel>
                 <TextBlock>landfill open year:</TextBlock>
-                <TextBox Width="106" HorizontalAlignment="left"/>
+                <TextBox Height="21" Width="106" HorizontalAlignment="left" Text="{Binding DataInsertionModel.LandfillClosureYear , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock>landfill closure year:</TextBlock>
                 <TextBox Height="21" Width="106" HorizontalAlignment="left" Text="{Binding DataInsertionModel.LandfillClosureYear , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock><Run Text="have model calculate closure year?"/></TextBlock>
-                <RadioButton> yes</RadioButton>
-                <RadioButton>no</RadioButton>
+                <RadioButton Content="Yes" 
+                    IsChecked="{Binding radioButtonState, Converter={StaticResource  RadioButtonConverter}, ConverterParameter=Yes, Mode=TwoWay}"
+                />
+                <RadioButton Content="No" IsChecked="{Binding radioButtonState, Converter={StaticResource  RadioButtonConverter}, ConverterParameter=Yes, Mode=TwoWay}"
+                />
                 <TextBlock><Run Text="waste desgin capacity:"/></TextBlock>
-                <ComboBox Width="120"  HorizontalAlignment="left">
-                    <ComboBoxItem Content="megagrams" IsSelected="true"/>
-                    <ComboBoxItem Content="short tons"/>
-                </ComboBox>
+                <ComboBox ItemsSource="{Binding WasteDesignOptions}" SelectedItem="{Binding wasteDesignOption, Mode=TwoWay}" />
+
             </StackPanel>
         </GroupBox>
         <GroupBox Header="2. Determine Model Parameters" Grid.Column="0" Grid.Row="1">
             <StackPanel>
                 <Label Content="Methane Generation Rate, k (year^-1)"/>
-                <ComboBox MaxWidth="300"/>
+                <ComboBox ItemsSource="{Binding Parameter1Names}" SelectedItem="{Binding parameter1, Mode=TwoWay}" />
                 <Label Content="Potential Methane Generation Capacity, L0 (m3/MG)"/>
-                <ComboBox MaxWidth="300"/>
+                <ComboBox ItemsSource="{Binding Parameter2Names}" SelectedItem="{Binding parameter2, Mode=TwoWay}" />
                 <Label Content="NMOC Concnetration (ppmv as hexane)"/>
-                <ComboBox MaxWidth="300"/>
+                <ComboBox ItemsSource="{Binding Parameter3Names}" SelectedItem="{Binding parameter3, Mode=TwoWay}" />
                 <Label Content="Methane Generation Rate, k (year^-1)"/>
-                <ComboBox MaxWidth="300"/>
-
+                <ComboBox ItemsSource="{Binding Parameter4Names}" SelectedItem="{Binding parameter4, Mode=TwoWay}" />
             </StackPanel>
         </GroupBox>
 
         <GroupBox Header="3. Select Gasses/Pollutants" Grid.Column="0" Grid.Row="2">
             <StackPanel>
                 <Label Content="Gas / Pollutant #1"/>
-                <ComboBox MaxWidth="300"/>
+                <ComboBox ItemsSource="{Binding GasNames}" SelectedItem="{Binding selectedGas1, Mode=TwoWay}" />
                 <Label Content="Gas / Pollutant #2"/>
-                <ComboBox MaxWidth="300"/>
+                <ComboBox ItemsSource="{Binding GasNames}" SelectedItem="{Binding selectedGas2, Mode=TwoWay}" />
                 <Label Content="Gas / Pollutant #3"/>
-                <ComboBox MaxWidth="300"/>
+                <ComboBox ItemsSource="{Binding GasNames}" SelectedItem="{Binding selectedGas3, Mode=TwoWay}" />
                 <Label Content="Gas / Pollutant #4"/>
-                <ComboBox MaxWidth="300"/>
+                <ComboBox ItemsSource="{Binding GasNames}" SelectedItem="{Binding selectedGas4, Mode=TwoWay}" />
 
             </StackPanel>
         </GroupBox>
@@ -71,7 +72,7 @@
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Input Units"/>
-                    <ComboBox/>
+                        <ComboBox ItemsSource="{Binding InputUnits}" SelectedItem="{Binding inputUnit, Mode=TwoWay}" />
                 </StackPanel>
                 <DataGrid/>
             </StackPanel>

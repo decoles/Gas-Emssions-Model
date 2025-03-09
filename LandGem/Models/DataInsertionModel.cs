@@ -8,6 +8,7 @@ namespace LandGEM.Models
         private int _landfillClosureYear;
         private bool _calculateClosureYear;
         private string _wasteDesignCapacity = "";
+        private string _inputUnit = "";
 
         // Model Parameters
         private string _methaneGenerationRate = "";
@@ -91,6 +92,12 @@ namespace LandGEM.Models
         {
             get => _pollutant4;
             set => SetProperty(ref _pollutant4, value);
+        }
+
+        public string InputUnit
+        {
+            get => _inputUnit;
+            set => SetProperty(ref _inputUnit, value);
         }
     }
 }
