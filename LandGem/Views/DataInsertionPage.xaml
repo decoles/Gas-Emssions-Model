@@ -13,8 +13,8 @@
             <local:DataInsertionPage />
         </DataTemplate>
     </UserControl.Resources>
-
-    <Grid Background="white">
+    <!--<Grid Background="#202123">-->
+    <Grid Background="#202123">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80*"/>
             <ColumnDefinition Width="20*"/>
