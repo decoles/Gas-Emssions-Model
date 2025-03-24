@@ -27,17 +27,17 @@
         </Grid.RowDefinitions>
         <GroupBox Header="1. PROVIDE LANDFILL CHARACTERISITCS" Grid.Column="0" Grid.Row="0">
             <StackPanel>
-                <TextBlock>landfill open year:</TextBlock>
-                <TextBox Height="21" Width="106" HorizontalAlignment="left" Text="{Binding DataInsertionModel.LandfillClosureYear , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock>landfill closure year:</TextBlock>
-                <TextBox Height="21" Width="106" HorizontalAlignment="left" Text="{Binding DataInsertionModel.LandfillClosureYear , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock><Run Text="have model calculate closure year?"/></TextBlock>
+                <TextBlock Text="landfill open year:"/>
+                <TextBox  Width="106" HorizontalAlignment="left" Text="{Binding DataInsertionModel.LandfillClosureYear , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="landfill closure year:"/>
+                <TextBox  Width="106" HorizontalAlignment="left" Text="{Binding DataInsertionModel.LandfillClosureYear , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="have model calculate closure year?"/>
                 <RadioButton Content="Yes" 
                     IsChecked="{Binding radioButtonState, Converter={StaticResource  RadioButtonConverter}, ConverterParameter=Yes, Mode=TwoWay}"
                 />
                 <RadioButton Content="No" IsChecked="{Binding radioButtonState, Converter={StaticResource  RadioButtonConverter}, ConverterParameter=Yes, Mode=TwoWay}"
                 />
-                <TextBlock><Run Text="waste desgin capacity:"/></TextBlock>
+                <TextBlock Text="waste desgin capacity:"/>
                 <ComboBox ItemsSource="{Binding WasteDesignOptions}" SelectedItem="{Binding wasteDesignOption, Mode=TwoWay}" />
 
             </StackPanel>
@@ -45,37 +45,51 @@
         <GroupBox Header="2. Determine Model Parameters" Grid.Column="0" Grid.Row="1">
             <StackPanel>
                 <Label Content="Methane Generation Rate, k (year^-1)"/>
-                <ComboBox ItemsSource="{Binding Parameter1Names}" SelectedItem="{Binding parameter1, Mode=TwoWay}" />
+                <ComboBox MaxWidth="100" ItemsSource="{Binding Parameter1Names}" SelectedItem="{Binding parameter1, Mode=TwoWay}" />
                 <Label Content="Potential Methane Generation Capacity, L0 (m3/MG)"/>
-                <ComboBox ItemsSource="{Binding Parameter2Names}" SelectedItem="{Binding parameter2, Mode=TwoWay}" />
+                <ComboBox MaxWidth="100" ItemsSource="{Binding Parameter2Names}" SelectedItem="{Binding parameter2, Mode=TwoWay}" />
                 <Label Content="NMOC Concnetration (ppmv as hexane)"/>
-                <ComboBox ItemsSource="{Binding Parameter3Names}" SelectedItem="{Binding parameter3, Mode=TwoWay}" />
+                <ComboBox MaxWidth="100" ItemsSource="{Binding Parameter3Names}" SelectedItem="{Binding parameter3, Mode=TwoWay}" />
                 <Label Content="Methane Generation Rate, k (year^-1)"/>
-                <ComboBox ItemsSource="{Binding Parameter4Names}" SelectedItem="{Binding parameter4, Mode=TwoWay}" />
+                <ComboBox MaxWidth="100" ItemsSource="{Binding Parameter4Names}" SelectedItem="{Binding parameter4, Mode=TwoWay}" />
             </StackPanel>
         </GroupBox>
 
         <GroupBox Header="3. Select Gasses/Pollutants" Grid.Column="0" Grid.Row="2">
             <StackPanel>
                 <Label Content="Gas / Pollutant #1"/>
-                <ComboBox ItemsSource="{Binding GasNames}" SelectedItem="{Binding selectedGas1, Mode=TwoWay}" />
+                <ComboBox MaxWidth="100" ItemsSource="{Binding GasNames}" SelectedItem="{Binding selectedGas1, Mode=TwoWay}" />
                 <Label Content="Gas / Pollutant #2"/>
-                <ComboBox ItemsSource="{Binding GasNames}" SelectedItem="{Binding selectedGas2, Mode=TwoWay}" />
+                <ComboBox MaxWidth="100" ItemsSource="{Binding GasNames}" SelectedItem="{Binding selectedGas2, Mode=TwoWay}" />
                 <Label Content="Gas / Pollutant #3"/>
-                <ComboBox ItemsSource="{Binding GasNames}" SelectedItem="{Binding selectedGas3, Mode=TwoWay}" />
+                <ComboBox MaxWidth="100"  ItemsSource="{Binding GasNames}" SelectedItem="{Binding selectedGas3, Mode=TwoWay}" />
                 <Label Content="Gas / Pollutant #4"/>
-                <ComboBox ItemsSource="{Binding GasNames}" SelectedItem="{Binding selectedGas4, Mode=TwoWay}" />
+                <ComboBox MaxWidth="100" ItemsSource="{Binding GasNames}" SelectedItem="{Binding selectedGas4, Mode=TwoWay}" />
 
             </StackPanel>
         </GroupBox>
         <GroupBox Header="4. Enter Waste Acceptance Rates" Grid.Column="1" Grid.RowSpan="3">
-            <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Input Units"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                
+                <StackPanel Grid.Row="0">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Input Units"/>
                         <ComboBox ItemsSource="{Binding InputUnits}" SelectedItem="{Binding inputUnit, Mode=TwoWay}" />
+                    </StackPanel>
+                    <DataGrid/>
                 </StackPanel>
-                <DataGrid/>
-            </StackPanel>
+                <Button Grid.Row="1" BorderThickness="0" Margin="0 8" Padding="16" Background="#202123" Foreground="White" HorizontalAlignment="Stretch" FontSize="16">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Process >" FontSize="20"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
         </GroupBox>
 
     </Grid>
